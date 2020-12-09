@@ -614,26 +614,33 @@ function game5(game_score) {
     function gameLosePop() {
       $('#game5').css('display', 'none');
       $('header').css('display', 'none');
-      if(pre_post_mode==1){
-        $('#finalllllModal').modal({backdrop: 'static', keyboard: false})
-        db.ref(fullDbUrl+"Astep").set({step:2});
-        localStorage.setItem("Astep", 2)
-        // window.location.replace("step.html");
-        // history.go(-1)
-        pre_post_mode = 2
-        logFile.push(logFileSimple.join(''))
-        sessionStorage.setItem("logFile", JSON.stringify(logFile));
-        // save_a()
-        // save_b()
-      }else{
-        $('#finalModalMessage').html("所有測驗已結束\n</br>請通知主測者")
-        $('#finalModal').modal({backdrop: 'static', keyboard: false})  
-        db.ref(fullDbUrl+"Astep").set({step:4});
-        localStorage.setItem("Astep", 4)
-        logFile.push(logFileSimple.join(''))
-        save_a()
-        // save_b()
-      }
+      db.ref(fullDbUrl+"Astep/step").once('value').then(result=>{
+        if(result.val()==1){
+          $('#finalllllModal').modal({backdrop: 'static', keyboard: false})
+          db.ref(fullDbUrl+"Astep").set({step:2});
+          localStorage.setItem("Astep", 2)
+          // window.location.replace("step.html");
+          // history.go(-1)
+          pre_post_mode = 2
+          logFile.push(logFileSimple.join(''))
+          sessionStorage.setItem("logFile", JSON.stringify(logFile));
+          db.ref(fullDbUrl+"Simple_game_pre").push(logFileSimple);
+          // save_a()
+          // save_b()
+        }else{
+          $('#finalModalMessage').html("所有測驗已結束\n</br>請通知主測者")
+          $('#finalModal').modal({backdrop: 'static', keyboard: false})  
+          db.ref(fullDbUrl+"Astep").set({step:4});
+          localStorage.setItem("Astep", 4)
+          logFile.push(logFileSimple.join(''))
+          save_a()
+          db.ref(fullDbUrl+"Simple_game_post").push(logFileSimple);
+          // save_b()
+        }
+      }).catch(error => {
+        alert("您的網路異常無法繼續測驗，請通知主測者。")
+      });
+      
 
       // $('.pop__top > img').attr('src', 'img/pop_top-lose.png');
       // $('.pop__top--content').remove();

@@ -484,7 +484,7 @@ function game5(game_score) {
             console.log('lose');
           }
           if (_this.gameTime == 330) {
-            $("#game5-notify-text").text("若吸入bonus，可使用圓形按鈕下方輔助功能。");
+            $("#game5-notify-text").text("若吸入機會硬幣，可使用圓形按鈕下方輔助功能。");
           }
           if (_this.gameTime < 0) {
             _this.gameSuccess();

@@ -1,0 +1,407 @@
+﻿<!DOCTYPE html>
+<html translate="no">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>DGBL</title>
+	<meta name="google" content="notranslate">
+	<meta name="google" content="nopagereadaloud" />
+	<meta property="og:title" content="paper_game">
+	<meta property="og:description" content="paper_game" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="address=no">
+	<meta name="viewport" content="width=1280,  user-scalable=no">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, user-scalable=0"> -->
+	<!--CSS-->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+	<link type="text/css" rel="stylesheet" href="css/animate.css">
+	<link type="text/css" rel="stylesheet" href="css/magnific-popup.css">
+	<link type="text/css" rel="stylesheet" href="css/allv1.css">
+	<link type="text/css" rel="stylesheet" href="css/allv2.css">
+	<link type="text/css" rel="stylesheet" href="css/allv3.css">
+	<link type="text/css" rel="stylesheet" href="css/allv4.css">
+	<style>
+	body{
+		font-family: "微軟正黑體";
+	}
+	.clause_support,.img_support,.word_support{
+		display: none;
+	}
+	#game2_next_btn,#game2_support_btn,#game2_reset_btn,#game2_backspace_btn,#game2_submit_btn{
+		height:40px;
+		margin: 0 5px;
+	}
+	.btn-outline-success.disabled, .btn-outline-success:disabled {
+		color: #808080;
+		background-color: #d4d4d4;
+		border-color: #888;
+	}
+
+	.bingo_line{
+		display: none;
+	}
+	#game1-content{
+		background-image: url("images/game1_bg.jpg");
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center top;
+		height: 100vh;
+	}
+	#game1-content > div{
+		background-color: #ffffffcc;
+		top:55%;
+		transform:translateY(-55%);
+		position: relative;
+		/* transform: translate(0%, 40%); */
+	}
+	#game-notify-container{
+		margin-top: 10px;
+	}
+	/* #game1-content #game-notify-container{
+		top: 55%;
+		transform: translateY(-650%);
+		position: relative;
+	} */
+	@media (max-width: 1366px) {
+		#game1-content > div{
+			top:50%;
+			transform:translateY(-50%);
+		}
+	}
+	#game1-content.game2-content > div{
+		background-color: transparent;
+	}
+	/* #game1-content.game2-content #game-notify-container{
+		top: 45%;
+		transform: translateY(-650%);
+		position: relative;
+	} */
+	@media (max-width: 1366px) {
+		#game1-content.game2-content > div{
+			top:47%;
+			transform:translateY(-50%);
+		}
+	}
+	#game1-content header{
+		background-color: #ffffff85;
+		margin: 0 -15px;
+		padding: 0 35px;
+	}
+	#game1-content.game2-content header{
+		background-color: transparent;
+	}
+	#game1-content.game2-content header > .container{
+		color:#fff;
+		max-width: 960px;
+	}
+	#game1-content #qa_total{
+		font-weight: 700;
+		letter-spacing: -2px;
+	}
+	#game1-content .countdown-box{
+		background-color: #277b75;
+		color: #fff;
+		padding: 5px 0;
+		border-radius: 10px;
+		width: 150px;
+		text-align: center;
+	}
+	#game1-content .countdown-box h4{
+		font-weight: 700;
+		margin-bottom: 0;
+	}
+	#game1-content .countdown-box h4 span{
+		margin-left: 5px;
+	}
+	#game1-content #mission_score_box h5, #game1-content #game_score_box h5{
+		font-weight: 700;
+		letter-spacing: -1px;
+	}
+	#game1-content main{
+		/* padding: 25px 30px; */
+		padding:10px 15px;
+	}
+
+	#game1-content main .question h5{
+		font-weight: 700;
+		font-size: 17px;
+		line-height: 24px;
+	}
+	#game1-content main .blog-main .row .btn{
+		width: 48%;
+		margin: 0 1%;
+	}
+	#game1-content main .row >div button{
+		font-weight: 700;
+		font-size: 18px;
+	}
+	#game1-content main .row >div .start-btn{
+		font-weight: 700;
+		font-size: 18px;
+		width: 200px;
+		height: 200px;
+		padding: 0;
+		text-align: center;
+		border-radius: 59%;
+		font-size: 1.6rem;
+	}
+	#game1-content .btn.disabled, #game1-content .btn:disabled {
+		opacity: 0.3;
+	}
+
+	main#game2{
+		padding: 10px 0px;
+		max-width: 930px;
+	}
+	.col-22{
+		margin: 5px;
+	}
+	.panel_top{
+      position: relative;
+      z-index: 555;
+      margin-bottom: -25px;
+    }
+    .panel_bottom{
+      position: relative;
+      z-index: 555;
+      margin-top: -25px;
+    }
+    .progress{
+      width: 200px;
+      top: 33px;
+      right: 145px;
+      position: absolute;
+      z-index: 99999;
+	}
+	#game5_score_box{
+		position: absolute;
+		top: 30px;
+		right: 50px;
+		font-weight: 700;
+	}
+	#game5_score{
+		position: absolute;
+		top: 30px;
+		right: 35px;
+		font-weight: 700;
+	}
+	#nextModal{
+		z-index: 999997!important;
+	}
+	#alertModal{
+		z-index: 999999!important;
+	}
+	@media (min-width: 768px) and (max-width: 992px){
+		.container {
+			max-width: 100%;
+		}
+	}
+	@media (max-width: 918px){
+		.container {
+			width: 100%!important;
+			max-width: 918px!important;
+		}
+		.text-right h5,.text-left h5{
+			font-size: 1.1rem;
+		}
+	}
+	.step-btn {
+		font-weight: 700;
+		font-size: 18px;
+		width: 200px;
+		height: 200px;
+		padding: 0;
+		text-align: center;
+		border-radius: 59%;
+		font-size: 1.6rem;
+	}
+
+	.step-btn:disabled {
+		opacity: .2;
+	}
+	.vertical-center{
+		min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+		min-height: 100vh; /* These two lines are counted as one :-)       */
+	  
+		display: flex;
+		align-items: center;	
+	}
+	</style>
+</head>
+
+<body class="vertical-center" style="background-color:#dee7ff;" >
+	<main id="game3" role="main" class="container">
+		<div class="row flex-nowrap justify-content-center">
+			<div class="col-md-4 text-center">
+				<button id="step-btn1" class="col-12 btn btn-lg shadow-sm btn-info step-btn" type="button" disabled onclick="location.href='index11.html'">遊戲測驗</button>
+			</div>
+			<div class="col-md-4 text-center">
+				<button id="step-btn2" class="col-12 btn btn-lg shadow-sm btn-info step-btn" type="button" disabled onclick="location.href='index12.html'">學習任務</button>
+			</div>
+			<div class="col-md-4 text-center">
+				<button id="step-btn3" class="col-12 btn btn-lg shadow-sm btn-info step-btn" type="button" disabled onclick="location.href='index13.html'">遊戲測驗</button>
+			</div>
+		</div>
+	</main>
+
+	<!--JS-->
+	<script type="text/javascript" src="js/jquery.3.2.1min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/TweenMax.min.js"></script>
+	<script type="text/javascript" src="js/FileSaver.js"></script>
+	<script type="text/javascript" src="js/common.min.js"></script>
+	<script type="text/javascript" src="js/common2.min.js"></script>
+	<script type="text/javascript" src="js/allv1.min.js"></script>
+	<script type="text/javascript" src="js/allv2.min.js"></script>
+	<script type="text/javascript" src="js/allv3.min.js"></script>
+	<script type="text/javascript" src="js/allv4.min.js"></script>
+	<script>
+		var save_number = localStorage.getItem("testNumber")
+		var save_name = localStorage.getItem("testName")
+		var save_gender = localStorage.getItem("testGender")
+        function saveStaticDataToFile() {
+			var blob = new Blob(logFile,{ type: "text/plain;charset=utf-8" });
+			var blobSimple = new Blob(logFileSimple,{ type: "text/plain;charset=utf-8" });
+			saveAs(blob, "Log_Detail.txt");
+			saveAs(blobSimple, "Log_simple_new.txt");
+		}
+		function save_a() {
+			var blob = new Blob(logFile,{ type: "text/plain;charset=utf-8" });
+			saveAs(blob, save_number + "_" + save_name + "_" + save_gender + "_Log_Detail.txt");
+		}
+		function save_b() {
+			var blobSimple = new Blob(logFileSimple,{ type: "text/plain;charset=utf-8" });
+			saveAs(blobSimple, save_number + "_" + save_name + "_" + save_gender + "_Log_Simple.txt");
+		}
+		
+		// 鎖住鍵盤特定按鍵 //
+		$(document).keydown(function (event) {
+			if (event.keyCode < 65 && event.keyCode != 8 && event.keyCode != 20 && event.keyCode != 32 ) { 
+				return false;
+			}else if ( event.keyCode > 90 && event.keyCode != 8 && event.keyCode != 20 && event.keyCode != 32 ) {
+			   return false;
+		   }
+		});
+		
+		// 禁止複製+鎖右鍵+禁止全選-IE﹑Firefox﹑Chrome﹑Safari﹑Opera //
+		function iEsc(){ 
+			return false;
+		}
+
+		function iRec(){ 
+			return true;
+		}
+
+		function DisableKeys() {
+		if(event.ctrlKey || event.shiftKey || event.altKey) {
+			window.event.returnValue=false;
+			iEsc();}
+		}
+		document.ondragstart=iEsc;
+		document.onkeydown=DisableKeys;
+		document.oncontextmenu=iEsc;
+		if (typeof document.onselectstart !="undefined")
+			document.onselectstart=iEsc;
+		else{
+			document.onmousedown=iEsc;
+			document.onmouseup=iRec;
+		}
+		function DisableRightClick(qsyzDOTnet){
+			if (window.Event){
+				if (qsyzDOTnet.which == 2 || qsyzDOTnet.which == 3)
+					iEsc();
+			}
+			else
+				if (event.button == 2 || event.button == 3){
+					event.cancelBubble = true;
+					event.returnValue = false;
+					iEsc();
+				}
+		}
+
+		// 全螢幕事件 //
+		addEventListener("click", function() {
+			var elem = document.documentElement
+			if (elem.requestFullscreen) {
+				elem.requestFullscreen();
+			} else if (elem.mozRequestFullScreen) {  Firefox 
+				elem.mozRequestFullScreen();
+			} else if (elem.webkitRequestFullscreen) { 
+				elem.webkitRequestFullscreen();
+			} else if (elem.msRequestFullscreen) { 
+				elem.msRequestFullscreen();
+			}
+		});
+	</script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+		  apiKey: "AIzaSyCMhrrCULGljEa3ZgxS5Hs1iCaIi8qKR5E",
+		  authDomain: "test-f37f3.firebaseapp.com",
+		  databaseURL: "https://test-f37f3.firebaseio.com",
+		  projectId: "test-f37f3",
+		  storageBucket: "test-f37f3.appspot.com",
+		  messagingSenderId: "342984671821",
+		  appId: "1:342984671821:web:2c685db94b58bef8021204"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		var db = firebase.database()
+		var rootDoc = save_number + "_" + save_name
+		var dtt = new Date();
+		var yearr = localStorage.getItem("yearr")
+		var monthh = localStorage.getItem("monthh")
+		var dayy = localStorage.getItem("dayy")
+		var hourr = localStorage.getItem("hourr")
+		var minn = localStorage.getItem("minn")
+		var fullDate = yearr + "_" + monthh + "_" + dayy + "_" + hourr + "_" + minn
+		var fullDbUrl = '/'+ rootDoc + "/" + fullDate + "/"
+		db.ref(fullDbUrl+"Detail").push("新使用者");
+
+		db.ref(fullDbUrl+"Astep").once('value').then(result=>{
+			if(result.val()===null||localStorage.getItem("Astep")===1){
+				db.ref(fullDbUrl+"Astep").set({step:1});
+				$('#step-btn1').attr('disabled', false);
+				$('#step-btn2').attr('disabled', true);
+				$('#step-btn3').attr('disabled', true);
+			}else{
+				if(result.val().step==2&&localStorage.getItem("Astep")==2){
+					$('#step-btn1').attr('disabled', true);
+					$('#step-btn2').attr('disabled', false);
+					$('#step-btn3').attr('disabled', true);
+				}else if(result.val().step==1&&localStorage.getItem("Astep")==1){
+					$('#step-btn1').attr('disabled', false);
+					$('#step-btn2').attr('disabled', true);
+					$('#step-btn3').attr('disabled', true);
+				}else if(result.val().step==3&&localStorage.getItem("Astep")==3){
+					$('#step-btn1').attr('disabled', true);
+					$('#step-btn2').attr('disabled', true);
+					$('#step-btn3').attr('disabled', false);
+				}else if(result.val().step==4){
+					$('#step-btn1').attr('disabled', true);
+					$('#step-btn2').attr('disabled', true);
+					$('#step-btn3').attr('disabled', true);
+					alert("您的測驗都已完成，若想重新測驗，請回到Start Page。")
+				}
+
+				if(result.val().step!=localStorage.getItem("Astep")){
+					alert("您的測驗發生未預期的錯誤，請通知主測者。")
+				}
+			}
+		}).catch(error => {
+			alert("您的網路異常無法繼續測驗，請通知主測者。")
+		});
+
+		$('#game2').css('display', 'block');
+		$('#mission_score_box').css('display', 'none');
+		$('#game_score_box').css('display', 'block');
+		game2s(0)
+	</script>
+</body>
+
+</html>

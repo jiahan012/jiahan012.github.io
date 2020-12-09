@@ -1,0 +1,800 @@
+﻿<!DOCTYPE html>
+<html translate="no">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>DGBL</title>
+	<meta name="google" content="notranslate">
+	<meta name="google" content="nopagereadaloud" />
+	<meta property="og:title" content="paper_game">
+	<meta property="og:description" content="paper_game" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="address=no">
+	<meta name="viewport" content="width=1280,  user-scalable=no">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, user-scalable=0"> -->
+	<!--CSS-->
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+	<link type="text/css" rel="stylesheet" href="css/animate.css">
+	<link type="text/css" rel="stylesheet" href="css/magnific-popup.css">
+	<link type="text/css" rel="stylesheet" href="css/allv1.css">
+	<link type="text/css" rel="stylesheet" href="css/allv2.css">
+	<link type="text/css" rel="stylesheet" href="css/allv3.css">
+	<link type="text/css" rel="stylesheet" href="css/allv4.css">
+	<style>
+		body{
+			font-family: "微軟正黑體";
+		}
+		.clause_support,.img_support,.word_support{
+			display: none;
+		}
+		#game2_next_btn,#game2_support_btn,#game2_reset_btn,#game2_backspace_btn,#game2_submit_btn{
+			height:40px;
+			margin: 0 5px;
+		}
+		.btn-outline-success.disabled, .btn-outline-success:disabled {
+			color: #808080;
+			background-color: #d4d4d4;
+			border-color: #888;
+		}
+		header,#game1,#game2,#game3,#game4,#game5,#game1StartPage,#game2StartPage,#game3StartPage,#game4StartPage,#game5StartPage{
+			display: none;
+		}
+		.bingo_line{
+			display: none;
+		}
+		#game1-content{
+			background-image: url("images/game1_bg.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center top;
+			height: 100vh;
+		}
+		#game1-content > div{
+			background-color: #ffffffcc;
+			top:55%;
+			transform:translateY(-55%);
+			position: relative;
+			/* transform: translate(0%, 40%); */
+		}
+		#game-notify-container{
+			margin-top: 10px;
+		}
+		/* #game1-content #game-notify-container{
+			top: 55%;
+			transform: translateY(-650%);
+			position: relative;
+		} */
+		@media (max-width: 1366px) {
+			#game1-content > div{
+				top:50%;
+				transform:translateY(-50%);
+			}
+		}
+		#game1-content.game2-content > div{
+			background-color: transparent;
+		}
+		/* #game1-content.game2-content #game-notify-container{
+			top: 45%;
+			transform: translateY(-650%);
+			position: relative;
+		} */
+		@media (max-width: 1366px) {
+			#game1-content.game2-content > div{
+				top:47%;
+				transform:translateY(-50%);
+			}
+		}
+		#game1-content header{
+			background-color: #ffffff85;
+			margin: 0 -15px;
+			padding: 0 35px;
+		}
+		#game1-content.game2-content header{
+			background-color: transparent;
+		}
+		#game1-content.game2-content header > .container{
+			color:#fff;
+			max-width: 960px;
+		}
+		#game1-content #qa_total{
+			font-weight: 700;
+			letter-spacing: -2px;
+		}
+		#game1-content .countdown-box{
+			background-color: #277b75;
+			color: #fff;
+			padding: 5px 0;
+			border-radius: 10px;
+			width: 150px;
+			text-align: center;
+		}
+		#game1-content .countdown-box h4{
+			font-weight: 700;
+			margin-bottom: 0;
+		}
+		#game1-content .countdown-box h4 span{
+			margin-left: 5px;
+		}
+		#game1-content #mission_score_box h5, #game1-content #game_score_box h5{
+			font-weight: 700;
+			letter-spacing: -1px;
+		}
+		#game1-content main{
+			/* padding: 25px 30px; */
+			padding:10px 15px;
+		}
+
+		#game1-content main .question h5{
+			font-weight: 700;
+			font-size: 17px;
+    		line-height: 24px;
+		}
+		#game1-content main .blog-main .row .btn{
+			width: 48%;
+			margin: 0 1%;
+		}
+		#game1-content main .row >div button{
+			font-weight: 700;
+			font-size: 18px;
+		}
+		#game1-content main .row >div .start-btn{
+			font-weight: 700;
+			font-size: 18px;
+			width: 200px;
+			height: 200px;
+			padding: 0;
+			text-align: center;
+			border-radius: 59%;
+			font-size: 1.6rem;
+		}
+		#game1-content .btn.disabled, #game1-content .btn:disabled {
+			opacity: 0.3;
+		}
+
+		main#game2{
+			padding: 10px 0px;
+			max-width: 930px;
+		}
+		.col-22{
+			margin: 5px;
+		}
+	    .panel_top{
+      position: relative;
+      z-index: 555;
+      margin-bottom: -25px;
+    }
+    .panel_bottom{
+      position: relative;
+      z-index: 555;
+      margin-top: -25px;
+    }
+    .progress{
+      width: 200px;
+      top: 33px;
+      right: 145px;
+      position: absolute;
+      z-index: 99999;
+	}
+	#game5_score_box{
+		position: absolute;
+		top: 30px;
+		right: 50px;
+		font-weight: 700;
+	}
+	#game5_score{
+		position: absolute;
+		top: 30px;
+		right: 35px;
+		font-weight: 700;
+	}
+	#nextModal{
+		z-index: 999997!important;
+	}
+	#alertModal{
+		z-index: 999999!important;
+	}
+	@media (min-width: 768px) and (max-width: 992px){
+		.container {
+			max-width: 100%;
+		}
+	}
+	@media (max-width: 918px){
+		.container {
+			width: 100%!important;
+			max-width: 918px!important;
+		}
+		.text-right h5,.text-left h5{
+			font-size: 1.1rem;
+		}
+	}
+
+	</style>
+</head>
+
+<body class="bg-light">
+<div id="game1-content">
+	<!-- <button type="button" onclick="saveStaticDataToFile();">Click to Save</button> -->
+	<div class="container">
+		<header class="blog-header py-3">
+			<div class="container">
+				<div class="row flex-nowrap justify-content-between align-items-center">
+					<div id="mission_score_box" class="col-4 text-right">
+						<h5 class="mb-0">
+							<span>任務得分：</span><span id="score">1000</span>
+						</h5>
+					</div>
+					<div id="game_score_box" class="col-4 text-right">
+						<h5 class="mb-0">
+							<span class="btn-label">遊戲得分：</span><span id="game_score">0</span>
+						</h5>
+					</div>
+					<div>
+						<div class="second_top-time countdown-box">
+							<h4>倒數:<span>90</span>秒</h4>
+						</div>
+					</div>
+					<div class="col-4 text-left">
+						<h5 id="qa_total" class="mb-0">
+							<span class="btn-label bingo_line">賓果線：</span><span id="bingo_line" class="bingo_line"></span><span class="bingo_line">&nbsp;條</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<span class="btn-label bingo_line">機會次數：</span><span id="op_line" class="bingo_line">3;</span><span class="bingo_line">&nbsp;/&nbsp;3</span>
+							<span class="base_qa_line">題數：</span><span id="topic" class="base_qa_line">1</span><span class="base_qa_line"> / </span><span id="qa_total_count" class="base_qa_line"> 16 </span>
+						</h5>
+					</div>
+				</div>
+			</div>
+		</header>
+		<h6 id="game-notify-container" class="container" style="max-width: 760px;">
+			<div id="game-notify" class="alert alert-info" role="alert">
+				<strong>提示: </strong>
+				<strong id="game-notify-text"></strong>
+			</div>
+		</h6>
+	
+		<main id="game1" role="main" class="container">
+			<div class="row align-items-end">
+				<div class="col-md-4 blog-main">
+					<img class="img_support" width="100%" src="" />
+					<div class="word_support"></div>
+					<div class="clause_support"></div>
+					<div class="row">
+						<button class="image_toggle btn btn-lg shadow-sm btn-light my-2">圖片提示(-30)</button>
+						<button class="word_toggle btn btn-lg shadow-sm btn-light my-2">單字提示(-30)</button>
+						<button class="clause_toggle btn btn-lg shadow-sm btn-light my-2">文法提示(-30)</button> 
+						<button class="remove_toggle btn btn-lg shadow-sm btn-light my-2">刪去選項(-30)</button>
+					</div>						
+				</div>
+				<div class="col-md-8 question">
+					<div style="display: flex; height: 80px;">
+						<h5 class="text-break" style="align-self: flex-start;"></h5>
+					</div>
+
+					<div class="answers">
+						<button class="col-12 btn btn-lg btns btn1 shadow-sm btn-light text-left my-2" type="button"></button>
+						<button class="col-12 btn btn-lg btn-lgbtns btn2 shadow-sm btn-light text-left my-2"></button>
+						<button class="col-12 btn btn-lg btns btn3 shadow-sm btn-light text-left my-2"></button>
+						<button class="col-12 btn btn-lg btns btn4 shadow-sm btn-light text-left my-2"></button>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<main id="game1StartPage" role="main" class="container">
+			<div class="row align-items-end justify-content-center">
+				<div class="col-md-4 text-center">
+					<button class="col-12 btn btn-lg shadow-sm btn-light start-btn" type="button" disabled>任務說明</button>
+				</div>
+				<div id="game1StartBtn" class="col-md-4 text-center">
+					<button class="col-12 btn btn-lg shadow-sm btn-light start-btn" type="button">任務開始</button>
+				</div>
+			</div>
+		</main>
+
+
+		<main id="game2" role="main" class="container" >
+
+			<!-- END 翻轉成功燈箱 -->
+			<div id="cardcard" style="display: inline-block;">
+				<!-- 卡片1 -->
+				<!-- <div class="col-3">
+					<div class="flip_card-container">
+						<div class="flip_card-item">
+							<div class="front face">
+								<img src="images/card.png">
+							</div>
+							<div class="back face">
+	
+							</div>
+						</div>
+						<img src="images/card_height.png">
+					</div>
+				</div>	 -->
+			</div>
+			<div style="width: 146px;display: inline-block;margin-left: 20px;">
+				<h6 id="game2-default-btn" style="color:#fff;font-weight: 700;">一般完成配對(+30)</h6>
+				<button id="game2-half-btn" class="my-2" type="button">提示範圍(+15)</button>
+				<button id="game2-match-btn" class="my-2" type="button">消除一組配對(+0)</button>
+			</div>
+
+		</main>
+
+		<main id="game2StartPage" role="main" class="container">
+			<div class="row align-items-end justify-content-center">
+				<div class="col-md-4 text-center">
+					<button class="col-12 btn btn-lg shadow-sm btn-light start-btn" type="button" disabled>遊戲說明</button>
+				</div>
+				<div id="game2StartBtn" class="col-md-4 text-center">
+					<button class="col-12 btn btn-lg shadow-sm btn-light start-btn" type="button">遊戲開始</button>
+				</div>
+			</div>
+		</main>
+	
+		<main id="game3" role="main" class="container">
+			<div class="row flex-nowrap justify-content-center">
+			<div style="max-width: 524px;">
+				<div class="out">
+					<div class="in"><h3>1</h3></div>
+					<div class="in"><h3>1</h3></div>
+					<div class="in"><h3>1</h3></div>
+					<div class="in"><h3>1</h3></div>
+					<div class="in"><h3>1</h3></div>
+					<div class="in"><h3>1</h3></div>
+					<div class="in"><h3>1</h3></div>
+					<div class="in"><h3>1</h3></div>
+					<div class="in"><h3>1</h3></div>
+					<div class="in"><h3>1</h3></div>
+					<div class="in"><h3>1</h3></div>
+					<div class="in"><h3>1</h3></div>
+					<div class="in"><h3>1</h3></div>
+					<div class="in"><h3>1</h3></div>
+					<div class="in"><h3>1</h3></div>
+					<div class="in"><h3>1</h3></div>
+				</div>
+			</div>
+			<div class="col-5" style="min-width: 455px;">
+				<div class="ddd">
+					<h1 id="data_tw" class="mt-3"></h1>
+					<h1 id="game2_support" class="mt-3" style="font-size: 2.3rem;"></h1>
+					<div style="margin-top: 95px;">
+						<h5>⊿請於左側依序點擊(完整)單字</h5>
+						<h1 id="data_v"></h1>
+					</div>
+				</div>
+	
+				<div style="margin-top: 20px;display:inline-block;">
+					<div id="aaa"></div>
+					<!-- <button id="game2_reset_btn" type="button">重新拼字</button> -->
+					<button id="game2_backspace_btn" class="game2_backspace_btn" type="button">清除字母</button>
+					<button id="game2_submit_btn" class="game2_submit_btn" type="button">送出</button>
+				</div>
+				<div style="margin-top: 20px;display:inline-block; float:right;">
+					<h6 id="game2-default-btn" style="color:#fff;font-weight: 700;">一般答題正確(+25)</h6>
+					<div>
+						<button id="game2_support_btn" class="my-2" type="button">提示單字(+15)</button>
+					</div>
+					<button id="game2_next_btn" class="my-2" type="button">下一題(+0)</button>
+				</div>	
+			</div>	
+			</div>
+		</main>
+
+		<main id="game3StartPage" role="main" class="container">
+			<div class="row align-items-end justify-content-center">
+				<div class="col-md-4 text-center">
+					<button class="col-12 btn btn-lg shadow-sm btn-light start-btn" type="button" disabled>遊戲說明</button>
+				</div>
+				<div id="game3StartBtn" class="col-md-4 text-center">
+					<button class="col-12 btn btn-lg shadow-sm btn-light start-btn" type="button">遊戲開始</button>
+				</div>
+			</div>
+		</main>
+
+		<main id="game4" role="main" class="container" >
+			<!-- <div class="row">
+				<div class="col-12">
+					<div class="button text-center">
+						<button onClick="startGame()">Replay</button>
+					  </div>
+				</div>
+			</div> -->
+			<div class="row align-items-center justify-content-center">
+				<table>
+					<tr>
+						<td class="cell" id="0"></td>
+						<td class="cell" id="1"></td>
+						<td class="cell" id="2"></td>
+						<td class="cell" id="3"></td>
+						<td class="cell" id="4"></td>
+					</tr>
+					<tr>
+						<td class="cell" id="5"></td>
+						<td class="cell" id="6"></td>
+						<td class="cell" id="7"></td>
+						<td class="cell" id="8"></td>
+						<td class="cell" id="9"></td>
+					</tr>
+					<tr>
+						<td class="cell" id="10"></td>
+						<td class="cell" id="11"></td>
+						<td class="cell" id="12"></td>
+						<td class="cell" id="13"></td>
+						<td class="cell" id="14"></td>
+					</tr>
+					<tr>
+						<td class="cell" id="15"></td>
+						<td class="cell" id="16"></td>
+						<td class="cell" id="17"></td>
+						<td class="cell" id="18"></td>
+						<td class="cell" id="19"></td>
+					</tr>
+					<tr>
+						<td class="cell" id="20"></td>
+						<td class="cell" id="21"></td>
+						<td class="cell" id="22"></td>
+						<td class="cell" id="23"></td>
+						<td class="cell" id="24"></td>
+					</tr>
+				</table>
+				<div class="endgame">
+					<div class="text"></div>
+				</div>
+				<div style="width:150px;margin-left: 20px;">
+					<h6 id="game2-default-btn" style="color:#fff;font-weight: 700;">1條賓果線(+75)</h6>
+					<!--新-->
+					<button id="xtoo_btn" class="my-2">X變成O</button>
+					<!--新-->
+					<button id="x_ex_o_btn" class="my-2">X與O交換</button>
+				</div>
+			</div>
+	
+		</main>
+
+		<main id="game4StartPage" role="main" class="container">
+			<div class="row align-items-end justify-content-center">
+				<div class="col-md-4 text-center">
+					<button class="col-12 btn btn-lg shadow-sm btn-light start-btn" type="button" disabled>遊戲說明</button>
+				</div>
+				<div id="game4StartBtn" class="col-md-4 text-center">
+					<button class="col-12 btn btn-lg shadow-sm btn-light start-btn" type="button">遊戲開始</button>
+				</div>
+			</div>
+		</main>
+
+		<main id="game5" role="main" class="container p-0">
+			<div class="main">
+				<!-- 遊戲結束燈箱 -->
+				<div class="pop hide">
+				  <div class="pop__btn">
+					<a class="btn__reload" href="javascript:;">
+					  <img src="img/pop_btn-reload.png">
+					</a>
+				  </div>
+				</div>
+				<!-- 初始畫面 -->
+				<div class="start">
+				  <a class="start__startgame" href="javascript:;"><img src="img/btn_startgame.png" alt="開始遊戲"></a>
+				</div>
+
+				<div class="panel_top">
+				  	<img src="img/panel_top.png" alt=""/>
+					<h6 id="game5-notify-container" class="container" style="max-width: 770px;position: absolute;top: 10px;left: 140px;">
+						<div id="game5-notify" class="alert alert-info" role="alert">
+							<strong>提示: </strong>
+							<strong id="game5-notify-text"></strong>
+						</div>
+					</h6>
+				</div>     
+				<!-- 遊戲畫面 -->
+				<div class="game5_content">
+					<div style="top: 20px;right: 357px;position: absolute;">
+					<img src="img/bonus.png" width="50">
+					X <span id="game5_bonus_count">0</span>
+					</div>
+				  <div class="progress">
+					<div id="barr" class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span id="hppp"></span></div>
+				  </div>        
+				  <p class="game__time">360</p>
+				  <span id="game5_score_box" class="btn-label">遊戲得分：</span><span id="game5_score">0</span>
+				  <div class="game__boxman"><img id="boxman_value" src="img/boxman.png"></div>
+				</div>
+				<div class="panel_bottom">
+				  <div class="game__btn" href="javascript:;"><img src="img/btn1.png"></div>
+				  <div style="position: absolute;bottom: 0%;left: 50%;-webkit-transform: translateX(-50%);transform: translateX(-50%);z-index: 20;">
+					<button id="game5_hp_btn" type="button">補血+30</button>
+					<button id="game5_time_btn" type="button">時間+30秒</button>
+				  </div>
+				  <img src="img/panel_down.png" alt=""/>
+				</div>
+				<!-- game5題目區 -->
+				<h5 id="game5_qa_total" class="mb-0 my-1" style="font-size: 15px;">
+					<span>題數：</span><span id="game5_topic">1</span><span> / </span><span> 10 </span>
+				</h5>
+				<div class="game5_question" style="font-size: 18px;">
+				  
+				</div>
+				<!-- <div id="rrrrr"></div> -->
+			</div>
+		</main>
+
+
+		<main id="game5StartPage" role="main" class="container">
+			<div class="row align-items-end justify-content-center">
+				<div class="col-md-4 text-center">
+					<button class="col-12 btn btn-lg shadow-sm btn-light start-btn" type="button" disabled>遊戲說明</button>
+				</div>
+				<div id="game5StartBtn" class="col-md-4 text-center">
+					<button class="col-12 btn btn-lg shadow-sm btn-light start-btn" type="button">遊戲開始</button>
+				</div>
+			</div>
+		</main>
+
+	</div>
+</div>
+
+	<!-- 任務測驗 alert popup -->
+	<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" data-target=".bd-example-modal-sm" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+			<div class="modal-content">
+				<div id="alertModalMessage" class="modal-body" style="text-align: center;font-size: 1.4em;">
+					
+				</div>
+				<div class="modal-footer" style="padding:10px;">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">知道了</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--任務測驗popUp-->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		  <div class="modal-content">
+			<div class="modal-body p-5">
+				<div class="wrong_support" style="text-align: center;font-size: 1.4em;margin-bottom:15px;">
+					答錯2次了! 加強學習吧!
+				</div>
+				<div class="wrong_support_toggle">
+					<div class="row align-items-end">
+						<button class="wrong_support_translate_toggle btn btn-lg shadow-sm btn-light p-4" style="width: 31%;margin: 0 1.1%;">文章翻譯</button>
+						<button class="wrong_support_word_toggle btn btn-lg shadow-sm btn-light p-4" style="width: 31%;margin: 0 1.1%;">單字提示</button>
+						<button class="wrong_support_clause_toggle btn btn-lg shadow-sm btn-light p-4" style="width: 31%;margin: 0 1.1%;">文法提示</button>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary next_q" data-dismiss="modal">下一題</button>
+			</div>
+		  </div>
+		</div>
+	</div>
+
+	<!-- 下一關popup -->
+	<div class="modal fade" id="nextModal" tabindex="-1" role="dialog" data-target=".bd-example-modal-sm" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+			<div class="modal-content">
+				<div id="nextModalMessage" class="modal-body" style="text-align: center;font-size: 1.4em;">
+					
+				</div>
+				<div class="modal-footer" style="padding:10px;">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">下一關</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 下一關popup -->
+	<div class="modal fade" id="finalllllModal" tabindex="-1" role="dialog" data-target=".bd-example-modal-sm" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+			<div class="modal-content">
+				<div id="finalllllModalModalMessage" class="modal-body" style="text-align: center;font-size: 1.4em;">
+					完成遊戲測驗<br>即將進入下一段測驗
+				</div>
+				<div class="modal-footer" style="padding:10px;">
+					<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="location.href='step.html'">確定</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- game3 下一題 popup -->
+	<div class="modal fade" id="game3NextModal" tabindex="-1" role="dialog" data-target=".bd-example-modal-sm" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+			<div class="modal-content">
+				<div id="game3NextModalMessage" class="modal-body" style="text-align: center;font-size: 1.4em;">
+					放棄此題將無法再回答?
+				</div>
+				<div class="modal-footer" style="padding:10px;">
+					<button id="game3NextRight" type="button" class="btn btn-primary" data-dismiss="modal">確定</button>
+					<button id="game3NextCancel" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- game3 送出鍵確認 popup -->
+	<div class="modal fade" id="game3SubmitCheckModal" tabindex="-1" role="dialog" data-target=".bd-example-modal-sm" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+			<div class="modal-content">
+				<div id="game3SubmitCheckModalMessage" class="modal-body" style="text-align: center;font-size: 1.4em;">
+					您送出的拼字為
+				</div>
+				<div class="modal-footer" style="padding:10px;">
+					<button id="game3SubmitCheckRight" type="button" class="btn btn-primary" data-dismiss="modal">確定</button>
+					<button id="game3SubmitCheckCancel" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 結束測驗 popup -->
+	<div class="modal fade" id="finalModal" tabindex="-1" role="dialog" data-target=".bd-example-modal-sm" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+			<div class="modal-content">
+				<div id="finalModalMessage" class="modal-body" style="text-align: center;font-size: 1.4em;">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="game4_popup">
+		<div class="container" style="max-width:600px;height:100%;">
+			<div class="row align-items-center" style="height:100%;">
+				<div class="col-12">
+					<div id="game4_popup_img" class="text-center mb-3">
+					</div>
+					<p id="answer"></p>
+
+					<div class="controls text-center">
+						<button id="play" type="submit">聽發音</button>
+					</div>
+					<div class="game4_title">
+
+					</div>
+					<div class="form-item">
+						<label>請輸入單字</label><span style="float:right">答題機會:<span id="game4_remain">1</span><span> / </span><span> 3 </span></span>
+						<div class="input-wrapper"><input class="game4_input" type="text" name="username" id="username" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" /></div>
+					</div>
+					<button id="game4_submit">提交答案</button>
+					<!-- <button id="game4_cancel">離開</button> -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--JS-->
+	<script type="text/javascript" src="js/jquery.3.2.1min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/TweenMax.min.js"></script>
+	<script type="text/javascript" src="js/FileSaver.js"></script>
+	<script type="text/javascript" src="js/common.min.js"></script>
+	<script type="text/javascript" src="js/common2.min.js"></script>
+	<script type="text/javascript" src="js/allv1.min.js"></script>
+	<script type="text/javascript" src="js/allv2.min.js"></script>
+	<script type="text/javascript" src="js/allv3.min.js"></script>
+	<script type="text/javascript" src="js/allv4.min.js"></script>
+	<script>
+		var save_number = localStorage.getItem("testNumber")
+		var save_name = localStorage.getItem("testName")
+		var save_gender = localStorage.getItem("testGender")
+        function saveStaticDataToFile() {
+			var blob = new Blob(logFile,{ type: "text/plain;charset=utf-8" });
+			var blobSimple = new Blob(logFileSimple,{ type: "text/plain;charset=utf-8" });
+			saveAs(blob, "Log_Detail.txt");
+			saveAs(blobSimple, "Log_simple_new.txt");
+		}
+		function save_a() {
+			var blob = new Blob(logFile,{ type: "text/plain;charset=utf-8" });
+			saveAs(blob, save_number + "_" + save_name + "_" + save_gender + "_Log_Detail_遊戲一.txt");
+		}
+		/*function save_b() {
+			var blobSimple = new Blob(logFileSimple,{ type: "text/plain;charset=utf-8" });
+			saveAs(blobSimple, save_number + "_" + save_name + "_" + save_gender + "_Log_Simple.txt");
+		}*/
+		
+		// 鎖住鍵盤特定按鍵 //
+		$(document).keydown(function (event) {
+			if (event.keyCode < 65 && event.keyCode != 8 && event.keyCode != 20 && event.keyCode != 32 ) { 
+				return false;
+			}else if ( event.keyCode > 90 && event.keyCode != 8 && event.keyCode != 20 && event.keyCode != 32 ) {
+			   return false;
+		   }
+		});
+		
+		// 禁止複製+鎖右鍵+禁止全選-IE﹑Firefox﹑Chrome﹑Safari﹑Opera //
+		function iEsc(){ 
+			return false;
+		}
+
+		function iRec(){ 
+			return true;
+		}
+
+		function DisableKeys() {
+		if(event.ctrlKey || event.shiftKey || event.altKey) {
+			window.event.returnValue=false;
+			iEsc();}
+		}
+		document.ondragstart=iEsc;
+		document.onkeydown=DisableKeys;
+		document.oncontextmenu=iEsc;
+		if (typeof document.onselectstart !="undefined")
+			document.onselectstart=iEsc;
+		else{
+			document.onmousedown=iEsc;
+			document.onmouseup=iRec;
+		}
+		function DisableRightClick(qsyzDOTnet){
+			if (window.Event){
+				if (qsyzDOTnet.which == 2 || qsyzDOTnet.which == 3)
+					iEsc();
+			}
+			else
+				if (event.button == 2 || event.button == 3){
+					event.cancelBubble = true;
+					event.returnValue = false;
+					iEsc();
+				}
+		}
+
+		// 關閉視窗前的警告 //
+		//function myFunction() {
+			//return false;
+		//}
+
+		// 全螢幕事件 //
+		addEventListener("click", function() {
+			var elem = document.documentElement
+			if (elem.requestFullscreen) {
+				elem.requestFullscreen();
+			} else if (elem.mozRequestFullScreen) {  Firefox 
+				elem.mozRequestFullScreen();
+			} else if (elem.webkitRequestFullscreen) { 
+				elem.webkitRequestFullscreen();
+			} else if (elem.msRequestFullscreen) { 
+				elem.msRequestFullscreen();
+			}
+		});
+
+	</script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+		  apiKey: "AIzaSyCMhrrCULGljEa3ZgxS5Hs1iCaIi8qKR5E",
+		  authDomain: "test-f37f3.firebaseapp.com",
+		  databaseURL: "https://test-f37f3.firebaseio.com",
+		  projectId: "test-f37f3",
+		  storageBucket: "test-f37f3.appspot.com",
+		  messagingSenderId: "342984671821",
+		  appId: "1:342984671821:web:2c685db94b58bef8021204"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		var db = firebase.database()
+		var rootDoc = save_number + "_" + save_name
+		var dtt = new Date();
+		var yearr = localStorage.getItem("yearr")
+		var monthh = localStorage.getItem("monthh")
+		var dayy = localStorage.getItem("dayy")
+		var hourr = localStorage.getItem("hourr")
+		var minn = localStorage.getItem("minn")
+		var fullDate = yearr + "_" + monthh + "_" + dayy + "_" + hourr + "_" + minn
+		var fullDbUrl = '/'+ rootDoc + "/" + fullDate + "/"
+
+
+		$('#game2').css('display', 'block');
+		$('#mission_score_box').css('display', 'none');
+		$('#game_score_box').css('display', 'block');
+		localStorage.setItem("pre_post_mode", 1)
+		logFile = []
+		sessionStorage.setItem("logFile", JSON.stringify(logFile));
+		game2s(0)
+
+	</script>
+</body>
+
+</html>

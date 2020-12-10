@@ -242,7 +242,7 @@ function game1() {
 				localStorage.setItem("Astep", 3)
 				logFile.push(logFileSimple.join(''))
 				logFile.push("\n\n")
-				sessionStorage.setItem("logFile", JSON.stringify(logFile))
+				localStorage.setItem("logFile", JSON.stringify(logFile))
 			});
 
 			
@@ -356,7 +356,7 @@ function game1() {
 				localStorage.setItem("Astep", 3)
 				logFile.push(logFileSimple.join(''))
 				logFile.push("\n\n")
-				sessionStorage.setItem("logFile", JSON.stringify(logFile))
+				localStorage.setItem("logFile", JSON.stringify(logFile))
 			});
 		}
 	}

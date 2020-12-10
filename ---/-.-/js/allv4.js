@@ -625,7 +625,6 @@ function game5(game_score) {
           // window.location.replace("step.html");
           // history.go(-1)
           logFile.push(logFileSimple.join(''))
-          sessionStorage.setItem("logFile", JSON.stringify(logFile));
           // save_a()
           // save_b()
         }else{

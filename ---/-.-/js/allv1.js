@@ -1,3 +1,7 @@
+var logFile = []
+var logFileSimple = []
+logFile = JSON.parse(sessionStorage.getItem("logFile"));
+
 function game2s(game_score) {
   var s2 = game_score
   $('#game1-content').addClass("game2-content");
@@ -31,15 +35,7 @@ function game2(game_score) {
       clearInterval(i); 
   }
 
-  // // ie GG
-  // if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
-  //   $('.ie-mask').css('display', 'block');
-  // }
 
-  // $(window).on("load", function () {
-  //   // $('.loading_mask').addClass('fadeOut').show().delay(500).fadeOut(0);
-  //   setTimeout(animation, 400);
-  // })
   logFile.push("第一關遊戲開始(A)\n")
   logFileSimple.push("A")
   db.ref(fullDbUrl+"Detail").push("第一關遊戲開始(A)\n");
@@ -74,7 +70,6 @@ function game2(game_score) {
       db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score1);
       db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + score1);
       db.ref(fullDbUrl+"Detail").push("第一關遊戲結束-配對未完成(W)");
-      // db.ref(fullDbUrl+"Simple1").push(logFileSimple);
       $('#nextModal').on('hidden.bs.modal', function (e) {
         $('#game2').css('display', 'none');
         game3s(score1)
@@ -405,7 +400,6 @@ function game2(game_score) {
         db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + score1);
         db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (180-game1_time));
         db.ref(fullDbUrl+"Detail").push("第一關遊戲結束-配對皆完成(F)");
-        // db.ref(fullDbUrl+"Simple1").push(logFileSimple);
         $('#nextModal').on('hidden.bs.modal', function (e) {
           $('#game2').css('display', 'none');
           game3s(score1)

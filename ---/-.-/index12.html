@@ -577,7 +577,7 @@
 					
 				</div>
 				<div class="modal-footer" style="padding:10px;">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">下一關</button>
+					<button id="nextModalRight" type="button" class="btn btn-primary" data-dismiss="modal">下一關</button>
 				</div>
 			</div>
 		</div>
@@ -671,10 +671,7 @@
 	<script type="text/javascript" src="js/FileSaver.js"></script>
 	<script type="text/javascript" src="js/common.min.js"></script>
 	<script type="text/javascript" src="js/common2.min.js"></script>
-	<script type="text/javascript" src="js/allv1.min.js"></script>
-	<script type="text/javascript" src="js/allv2.min.js"></script>
-	<script type="text/javascript" src="js/allv3.min.js"></script>
-	<script type="text/javascript" src="js/allv4.min.js"></script>
+
 	<script>
 		var save_number = localStorage.getItem("testNumber")
 		var save_name = localStorage.getItem("testName")
@@ -788,7 +785,7 @@
 
 		$('#game1StartPage').css('display', 'block');
 		$('#game-notify').css('display', 'none');
-		localStorage.setItem("pre_post_mode", 2)
+
 		game1s()
 	</script>
 </body>

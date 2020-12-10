@@ -370,9 +370,9 @@
 					<button id="game2_submit_btn" class="game2_submit_btn" type="button">送出</button>
 				</div>
 				<div style="margin-top: 20px;display:inline-block; float:right;">
-					<h6 id="game2-default-btn" style="color:#fff;font-weight: 700;">一般答題正確(+25)</h6>
+					<h6 id="game2-default-btn" style="color:#fff;font-weight: 700;">一般答題正確(+20)</h6>
 					<div>
-						<button id="game2_support_btn" class="my-2" type="button">提示單字(+15)</button>
+						<button id="game2_support_btn" class="my-2" type="button">提示單字(+10)</button>
 					</div>
 					<button id="game2_next_btn" class="my-2" type="button">下一題(+0)</button>
 				</div>	
@@ -643,7 +643,22 @@
 						<div class="input-wrapper"><input class="game4_input" type="text" name="username" id="username" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" /></div>
 					</div>
 					<button id="game4_submit">提交答案</button>
-					<!-- <button id="game4_cancel">離開</button> -->
+					<button id="game4_cancel">放棄此題</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- game4 放棄按鈕 -->
+	<div class="modal fade" id="game4NextModal" tabindex="-1" role="dialog" data-target=".bd-example-modal-sm" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+			<div class="modal-content">
+				<div id="game4NextModalMessage" class="modal-body" style="text-align: center;font-size: 1.4em;">
+					放棄此題將得到X ?
+				</div>
+				<div class="modal-footer" style="padding:10px;">
+					<button id="game4NextRight" type="button" class="btn btn-primary" data-dismiss="modal">確定</button>
+					<button id="game4NextCancel" type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
 				</div>
 			</div>
 		</div>
@@ -655,12 +670,10 @@
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/TweenMax.min.js"></script>
 	<script type="text/javascript" src="js/FileSaver.js"></script>
-	<script type="text/javascript" src="js/common.min.js"></script>
-	<script type="text/javascript" src="js/common2.min.js"></script>
 	<script type="text/javascript" src="js/allv1.min.js"></script>
 	<script type="text/javascript" src="js/allv2.min.js"></script>
 	<script type="text/javascript" src="js/allv3.min.js"></script>
-	<script type="text/javascript" src="js/allv4.min.js"></script>
+	<script type="text/javascript" src="js/allv4.js"></script>
 	<script>
 		var save_number = localStorage.getItem("testNumber")
 		var save_name = localStorage.getItem("testName")
@@ -673,7 +686,7 @@
 		}
 		function save_a() {
 			var blob = new Blob(logFile,{ type: "text/plain;charset=utf-8" });
-			saveAs(blob, save_number + "_" + save_name + "_" + save_gender + "_Log_Detail_遊戲二.txt");
+			saveAs(blob, save_number + "_" + save_name + "_" + save_gender + "_Log.txt");
 		}
 		/*function save_b() {
 			var blobSimple = new Blob(logFileSimple,{ type: "text/plain;charset=utf-8" });
@@ -775,6 +788,7 @@
 		$('#game2').css('display', 'block');
 		$('#mission_score_box').css('display', 'none');
 		$('#game_score_box').css('display', 'block');
+
 		game2s(0)
 	</script>
 </body>

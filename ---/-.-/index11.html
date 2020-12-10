@@ -671,9 +671,9 @@
 	<script type="text/javascript" src="js/FileSaver.js"></script>
 	<script type="text/javascript" src="js/common.min.js"></script>
 	<script type="text/javascript" src="js/common2.min.js"></script>
-	<script type="text/javascript" src="js/allv1.min.js"></script>
-	<script type="text/javascript" src="js/allv2.min.js"></script>
-	<script type="text/javascript" src="js/allv3.min.js"></script>
+	<script type="text/javascript" src="js/allv1.js"></script>
+	<script type="text/javascript" src="js/allv2.js"></script>
+	<script type="text/javascript" src="js/allv3.js"></script>
 	<script type="text/javascript" src="js/allv4.js"></script>
 	<script>
 		var save_number = localStorage.getItem("testNumber")
@@ -789,7 +789,6 @@
 		$('#game2').css('display', 'block');
 		$('#mission_score_box').css('display', 'none');
 		$('#game_score_box').css('display', 'block');
-		localStorage.setItem("pre_post_mode", 1)
 		logFile = []
 		sessionStorage.setItem("logFile", JSON.stringify(logFile));
 		game2s(0)

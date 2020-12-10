@@ -66,7 +66,6 @@ function game4(game_score) {
 	  db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score4);
 	  db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score4-game_score));
 	  db.ref(fullDbUrl+"Detail").push("第三關遊戲結束-時間到，題目未作答完(o)");
-	//   db.ref(fullDbUrl+"Simple3").push(logFileSimple);
 	  $("#game4_popup").css("display","none");
 	  $('#nextModal').on('hidden.bs.modal', function (e) {
 		$('#game4').css('display', 'none');
@@ -273,9 +272,7 @@ function game4(game_score) {
 				voice: 'A lot of people know that Mary has remarkable parents.'
 			},
 		]
-		if(pre_post_mode==2){
-			game4Array = game4Array.reverse();
-		}
+
 
 		const cells = document.querySelectorAll('.cell');
 		// console.log("cellscells",cells)
@@ -418,9 +415,9 @@ function game4(game_score) {
 			}
 			$('#alertModalMessage').html("很棒!答對了!")
 			$('#alertModal').modal({backdrop: 'static', keyboard: false})
-			logFile.push(game4_time + "秒-------------->提交答案-答題正確(s)\n")
+			logFile.push(game4_time + "秒-------------->答題正確得到O(s)\n")
 			logFileSimple.push("s")
-			db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->提交答案-答題正確(s)");
+			db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->答題正確得到O(s)");
 			remain = 3
 			$("#game4_remain").text(remain)
 		}
@@ -429,6 +426,11 @@ function game4(game_score) {
 			origBoard[squareId] = player;
 			document.getElementById(squareId).innerText = player;
 			let gameWon = checkWin(origBoard, player);
+			console.log(origBoard.includes())
+			console.log(origBoard.includes(aiPlayer))
+			console.log(origBoard.includes(huPlayer))
+			console.log(origBoard)
+			console.log(bingo_bonus)
 			// if (gameWon) gameOver(gameWon);
 			if(origBoard.includes(aiPlayer)&&origBoard.includes(huPlayer)){
 				if(bingo_bonus>=1){
@@ -447,6 +449,29 @@ function game4(game_score) {
 			if(origBoard.includes(aiPlayer)&&bingo_bonus>=1){
 				$("#xtoo_btn").attr('disabled', false);
 			}
+			var ans = origBoard.every(function(item, index, array){
+				return typeof(item) != "number" // 當全部 age 大於 10 才能回傳 true
+			});
+			console.log("ans",ans);
+
+			if(ans&&bingo_bonus<=0&&bingo_line<4){
+				$('#nextModalMessage').html("遊戲結束。\n</br>即將進入下一關遊戲")
+				$('#nextModal').modal({backdrop: 'static', keyboard: false}) 
+				logFile.push("遊戲分數:" + score4 + "\n")
+				logFile.push("此關遊戲得分:" + (score4-game_score) + "\n")
+				logFile.push("第三關遊戲結束-作答完畢，未達4條賓果線(u)\n")
+				logFile.push("\n")
+				logFileSimple.push("u")
+				db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score4);
+				db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score4-game_score));
+				db.ref(fullDbUrl+"Detail").push("第三關遊戲結束-作答完畢，未達4條賓果線(u)");
+				$("#game4_popup").css("display","none");
+				$('#nextModal').on('hidden.bs.modal', function (e) {
+				  $('#game4').css('display', 'none');
+				  game5s(score4)
+				});
+			}
+
 		}
 
 		function checkWin(board, player) {
@@ -498,15 +523,14 @@ function game4(game_score) {
 				// alert("第二關遊戲結束");
 				logFile.push("遊戲分數:" + score4 + "\n")
 				logFile.push("此關遊戲得分:" + (score4-game_score) + "\n")
-      			logFile.push("此關花費時間:" + (900-game4_time) + "\n")
+      			logFile.push("此關花費時間:" + (720-game4_time) + "\n")
 				logFile.push("第三關遊戲結束-全部題目作答完(e)\n")
 				logFile.push("\n")
 				logFileSimple.push("e")
 				db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score4);
 				db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score4-game_score));
-				db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (900-game4_time));
+				db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (720-game4_time));
 				db.ref(fullDbUrl+"Detail").push("第三關遊戲結束-全部題目作答完(e)");
-				// db.ref(fullDbUrl+"Simple3").push(logFileSimple);
 				$('#nextModal').on('hidden.bs.modal', function (e) {
 				  $('#game4').css('display', 'none');
 				  game5s(score4)
@@ -624,12 +648,22 @@ function game4(game_score) {
 
 
 		$('#game4_cancel').on( "click", function() {
-			logFile.push(game4_time + "秒-------------->放棄按鈕(g)\n")
-			logFileSimple.push("g")
-			db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->放棄按鈕(g)");
-			$("#game4_popup").css("display","none");
+			$('#game4NextModal').modal({backdrop: 'static', keyboard: false})
 		});
 
+		$('#game4NextRight').on( "click", function() {
+			logFile.push(game4_time + "秒-------------->放棄按鈕得到X(g)\n")
+			logFileSimple.push("g")
+			db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->放棄按鈕得到X(g)");
+			$("#game4NextModal").css("display","none");
+			$("#game4_popup").css("display","none");
+			turn(targetId, aiPlayer);
+		})
+		$('#game4NextCancel').on( "click", function() {
+			$("#game4NextModal").css("display","none");
+		})
+
+		
 		$('#game4_submit').on( "click", function() {
 			remain--
 			$("#game4_remain").text(remain)
@@ -641,11 +675,8 @@ function game4(game_score) {
 					$("input[type=text][name=username]").val('')
 					$('#alertModalMessage').html("答錯了!")
 					$('#alertModal').modal({backdrop: 'static', keyboard: false})
-					logFile.push(game4_time + "秒-------------->提交答案-答題錯誤(w)\n")
-					logFileSimple.push("w")
-					db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->提交答案-答題錯誤(w)");
 				}
-			}else if(remain==0){
+			}else if(remain<=0){
 				if($("input[type=text][name=username]").val()===game4Array[targetId].answer){
 					$("input[type=text][name=username]").val('')
 					submitClick(targetId)
@@ -653,25 +684,14 @@ function game4(game_score) {
 					$("input[type=text][name=username]").val('')
 					$('#alertModalMessage').html("答錯了!")
 					$('#alertModal').modal({backdrop: 'static', keyboard: false})
-					logFile.push(game4_time + "秒-------------->提交答案-答題錯誤(w)\n")
+					logFile.push(game4_time + "秒-------------->答題錯誤得到X(w)\n")
 					logFileSimple.push("w")
-					db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->提交答案-答題錯誤(w)");
+					db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->答題錯誤得到X(w)");
 					remain = 3
 					$("#game4_remain").text(remain)
 					$("#game4_popup").css("display","none");
 					turn(targetId, aiPlayer);
 				}
-			}else{
-				$("input[type=text][name=username]").val('')
-				$('#alertModalMessage').html("答錯了!")
-				$('#alertModal').modal({backdrop: 'static', keyboard: false})
-				logFile.push(game4_time + "秒-------------->提交答案-答題錯誤(w)\n")
-				logFileSimple.push("w")
-				db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->提交答案-答題錯誤(w)");
-				remain = 3
-				$("#game4_remain").text(remain)
-				$("#game4_popup").css("display","none");
-				turn(targetId, aiPlayer);
 			}
 		});
 

@@ -271,6 +271,9 @@ function game5(game_score) {
               $("#boxman_value").attr("src","img/boxman.png")
               _this.$el.remove();
             }, 600);
+            setTimeout(function () {
+              $(".gggg-" + (title_index-1) ).remove();
+            }, 800);
             title_index +=1
             right_index = game5AnswerArray[String(title_index)][4]
             score5 += 30
@@ -301,7 +304,7 @@ function game5(game_score) {
               db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
               db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (900-game5_time));
               db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-全部題目作答完(d)");
-              db.ref(fullDbUrl+"Simple4").push(logFileSimple);
+              db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
               var highestIntervalId = setInterval(";");
               for (var i = 0 ; i < highestIntervalId ; i++) {
                   clearInterval(i); 
@@ -326,7 +329,7 @@ function game5(game_score) {
               db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
               db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
               db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-沒血量(h)");
-              db.ref(fullDbUrl+"Simple4").push(logFileSimple);
+              db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
               game.gameLose();
             }else{
               $("#boxman_value").attr("src","img/boxman2.png")
@@ -497,7 +500,7 @@ function game5(game_score) {
             db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
             db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
             db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-時間到，題目未作答完(z)");
-            db.ref(fullDbUrl+"Simple4").push(logFileSimple);
+            db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
             gameLosePop()
           }
         }, 1000);
@@ -513,13 +516,13 @@ function game5(game_score) {
         var blockType = R(0, 1);
         //****print障礙物-附加data-value****//
         if (blockType == 0) {
-          var $block = $('<div class="block" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><p>' + game5AnswerArray[String(title_index)][tt_index] +'</p><img src="img/cloud_v1.png"></div>');
+          var $block = $('<div class="block gggg-' + title_index + '" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><p>' + game5AnswerArray[String(title_index)][tt_index] +'</p><img src="img/cloud_v1.png"></div>');
           // tt_index+=1
           // if(tt_index===4){
           //   tt_index=0
           // }
         } else {
-          var $block = $('<div class="block" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><p>' + game5AnswerArray[String(title_index)][tt_index] +'</p><img src="img/cloud_v1.png"></div>');
+          var $block = $('<div class="block gggg-' + title_index + '" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><p>' + game5AnswerArray[String(title_index)][tt_index] +'</p><img src="img/cloud_v1.png"></div>');
           // tt_index+=1
           // if(tt_index===4){
           //   tt_index=0
@@ -621,10 +624,8 @@ function game5(game_score) {
           localStorage.setItem("Astep", 2)
           // window.location.replace("step.html");
           // history.go(-1)
-          pre_post_mode = 2
           logFile.push(logFileSimple.join(''))
           sessionStorage.setItem("logFile", JSON.stringify(logFile));
-          db.ref(fullDbUrl+"Simple_game_pre").push(logFileSimple);
           // save_a()
           // save_b()
         }else{
@@ -634,13 +635,13 @@ function game5(game_score) {
           localStorage.setItem("Astep", 4)
           logFile.push(logFileSimple.join(''))
           save_a()
-          db.ref(fullDbUrl+"Simple_game_post").push(logFileSimple);
+          db.ref(fullDbUrl+"SimpleAll").push(logFileSimple);
           // save_b()
         }
       }).catch(error => {
         alert("您的網路異常無法繼續測驗，請通知主測者。")
       });
-      
+
 
       // $('.pop__top > img').attr('src', 'img/pop_top-lose.png');
       // $('.pop__top--content').remove();

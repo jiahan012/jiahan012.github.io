@@ -235,9 +235,9 @@
 <body class="vertical-center" style="background-color:#dee7ff;" >
 	<main id="game3" role="main" class="container">
 		<div class="row flex-nowrap justify-content-center">
-			<div class="col-md-4 text-center">
+			<!-- <div class="col-md-4 text-center">
 				<button id="step-btn1" class="col-12 btn btn-lg shadow-sm btn-info step-btn" type="button" disabled onclick="location.href='index11.html'">遊戲測驗</button>
-			</div>
+			</div> -->
 			<div class="col-md-4 text-center">
 				<button id="step-btn2" class="col-12 btn btn-lg shadow-sm btn-info step-btn" type="button" disabled onclick="location.href='index12.html'">學習任務</button>
 			</div>
@@ -364,26 +364,19 @@
 		db.ref(fullDbUrl+"Detail").push("新使用者");
 
 		db.ref(fullDbUrl+"Astep").once('value').then(result=>{
-			if(result.val()===null||localStorage.getItem("Astep")===1){
-				db.ref(fullDbUrl+"Astep").set({step:1});
-				$('#step-btn1').attr('disabled', false);
-				$('#step-btn2').attr('disabled', true);
+			if(result.val()===null){
+				db.ref(fullDbUrl+"Astep").set({step:2});
+				localStorage.setItem("Astep",2)
+				$('#step-btn2').attr('disabled', false);
 				$('#step-btn3').attr('disabled', true);
 			}else{
-				if(result.val().step==2&&localStorage.getItem("Astep")==2){
-					$('#step-btn1').attr('disabled', true);
+				if(result.val().step==2){
 					$('#step-btn2').attr('disabled', false);
 					$('#step-btn3').attr('disabled', true);
-				}else if(result.val().step==1&&localStorage.getItem("Astep")==1){
-					$('#step-btn1').attr('disabled', false);
-					$('#step-btn2').attr('disabled', true);
-					$('#step-btn3').attr('disabled', true);
-				}else if(result.val().step==3&&localStorage.getItem("Astep")==3){
-					$('#step-btn1').attr('disabled', true);
+				}else if(result.val().step==3){
 					$('#step-btn2').attr('disabled', true);
 					$('#step-btn3').attr('disabled', false);
 				}else if(result.val().step==4){
-					$('#step-btn1').attr('disabled', true);
 					$('#step-btn2').attr('disabled', true);
 					$('#step-btn3').attr('disabled', true);
 					alert("您的測驗都已完成，若想重新測驗，請回到Start Page。")

@@ -1,6 +1,5 @@
 var logFile = []
 var logFileSimple = []
-var pre_post_mode = localStorage.getItem("pre_post_mode")
 
 // $('#game1StartPage').css('display', 'block');
 // $('#game-notify').css('display', 'none');
@@ -231,7 +230,7 @@ function game1() {
 			logFileSimple.push("E")
 			db.ref(fullDbUrl+"Detail").push("任務得分:" + score );
 			db.ref(fullDbUrl+"Detail").push("任務測驗結束(E)");
-			db.ref(fullDbUrl+"Simple0").push(logFileSimple);
+			db.ref(fullDbUrl+"SimpleMission").push(logFileSimple);
 			db.ref(fullDbUrl+"Astep").set({step:3});
 			localStorage.setItem("Astep", 3)
 			$('#nextModal').on('hidden.bs.modal', function (e) {
@@ -241,10 +240,9 @@ function game1() {
 				$('#game_score_box').css('display', 'block');
 				db.ref(fullDbUrl+"Astep").set({step:3});
 				localStorage.setItem("Astep", 3)
-				pre_post_mode = 2
 				logFile.push(logFileSimple.join(''))
-				save_a()
-				history.go(-1)
+				logFile.push("\n\n")
+				sessionStorage.setItem("logFile", JSON.stringify(logFile))
 			});
 
 			
@@ -274,6 +272,10 @@ function game1() {
 		db.ref(fullDbUrl+"Detail").push("第" + topic + "題");
 		// $('.wrong_support').html("<h5>文章翻譯:</h5>"+testArray[qaStart].translateSupport+"</br></br>"+"<h5>文法提示:</h5>"+testArray[qaStart].support+"</br></br>"+"<h5>單字提示:</h5>"+testArray[qaStart].wordSupport);
 	}
+
+	$('#nextModalRight').on("click", function() {
+		location.href='step.html'
+	});
 
 	//popup文章翻譯開啟時
 	$('.wrong_support_translate_toggle').on("click", function() {
@@ -344,7 +346,7 @@ function game1() {
 			logFileSimple.push("E")
 			db.ref(fullDbUrl+"Detail").push("任務得分:" + score);
 			db.ref(fullDbUrl+"Detail").push("任務測驗結束(E)");
-			db.ref(fullDbUrl+"Simple0").push(logFileSimple);
+			db.ref(fullDbUrl+"SimpleMission").push(logFileSimple);
 			$('#nextModal').on('hidden.bs.modal', function (e) {
 				$('#game1').css('display', 'none');
 				$('#game2').css('display', 'block');
@@ -352,13 +354,14 @@ function game1() {
 				$('#game_score_box').css('display', 'block');
 				db.ref(fullDbUrl+"Astep").set({step:3});
 				localStorage.setItem("Astep", 3)
-				pre_post_mode = 2
 				logFile.push(logFileSimple.join(''))
-				save_a()
-				history.go(-1)
+				logFile.push("\n\n")
+				sessionStorage.setItem("logFile", JSON.stringify(logFile))
 			});
 		}
 	}
 
 	showgame();
 };
+
+

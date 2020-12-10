@@ -31,7 +31,7 @@ function game3(game_score) {
   logFileSimple.push("H")
   db.ref(fullDbUrl+"Detail").push("第二關遊戲開始(H)");
 
-  var game2_time = 600;
+  var game2_time = 780;
   var score2 = game_score
   $('#qa_total').show();
   var game2_topic = 1
@@ -66,7 +66,6 @@ function game3(game_score) {
       db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score2);
       db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score2-game_score));
       db.ref(fullDbUrl+"Detail").push("第二關遊戲結束-時間到，題目未作答完(Q)");
-      // db.ref(fullDbUrl+"Simple2").push(logFileSimple);
       $('#nextModal').on('hidden.bs.modal', function (e) {
         $('#game3').css('display', 'none');
         game4s(score2)
@@ -88,6 +87,10 @@ function game3(game_score) {
     {
       tw:"參與(v)",
       en:"participate"
+    },
+    {
+      tw:"堂兄弟(n)",
+      en:"cousin"
     },
     {
       tw:"奉獻(v)",
@@ -124,11 +127,17 @@ function game3(game_score) {
     {
       tw:"非凡的(adj)",
       en:"remarkable"
+    },
+    {
+      tw:"同時地(adv)",
+      en:"concurrently"
+    },
+    {
+      tw:"不必要的(adj)",
+      en:"needless"
     }
   ];
-  if(pre_post_mode==2){
-    vocabulary = vocabulary.reverse();
-  }
+
   var newobj = [];
   var obj = [];
   var game2_number = 0
@@ -268,15 +277,14 @@ function game3(game_score) {
       clearInterval(interval);
       logFile.push("遊戲分數:" + score2 + "\n")
       logFile.push("此關遊戲得分:" + (score2-game_score) + "\n")
-      logFile.push("此關花費時間:" + (600-game2_time) + "\n")
+      logFile.push("此關花費時間:" + (780-game2_time) + "\n")
       logFile.push("第二關遊戲結束-全部題目作答完(Z)\n")
       logFile.push("\n")
       logFileSimple.push("Z")
       db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score2);
       db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score2-game_score));
-      db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (600-game2_time));
+      db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (780-game2_time));
       db.ref(fullDbUrl+"Detail").push("第二關遊戲結束-全部題目作答完(Z)");
-      // db.ref(fullDbUrl+"Simple2").push(logFileSimple);
       $('#nextModal').on('hidden.bs.modal', function (e) {
         $('#game3').css('display', 'none');
         game4s(score2)
@@ -401,9 +409,9 @@ function game3(game_score) {
       }
       game2_number+=1;
       if(!game2_isSupport){
-        score2 += 25
+        score2 += 20
       }else{
-        score2 += 15
+        score2 += 10
       }
       
       game2_topic+=1

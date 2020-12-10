@@ -60,7 +60,10 @@ function game5(game_score) {
     }, 
     {
       title: 'It _____ without saying that Mary may be the laziest person that John has ever met',
-    },         
+    }, 
+    {
+      title: 'xxxx',
+    },        
   ];
 
   var game5AnswerArray = {
@@ -73,7 +76,8 @@ function game5(game_score) {
     "6":["nor","or","and","for",0],
     "7":["prefer","prefers","like","likes",1],
     "8":["brings","keeps","gives","goes",0],
-    "9":["goes","was","is","goes",0]
+    "9":["goes","was","is","goes",0],
+    "10":["xxx","xxx","xxx","xxx",0]
   }
 
   var game5_time = 360;
@@ -271,9 +275,6 @@ function game5(game_score) {
               $("#boxman_value").attr("src","img/boxman.png")
               _this.$el.remove();
             }, 600);
-            setTimeout(function () {
-              $(".gggg-" + (title_index-1) ).remove();
-            }, 800);
             title_index +=1
             right_index = game5AnswerArray[String(title_index)][4]
             score5 += 30
@@ -290,26 +291,27 @@ function game5(game_score) {
             $('.game5_question').html('<h5 style="font-weight: 700;">' + iiiii + ". " + game5QuestionArray[title_index].title + '</h5>')
             // $('#rrrrr').html(game5AnswerArray[String(title_index)][right_index])
             logFile.push("第"+(title_index+1)+"題\n")
-		        db.ref(fullDbUrl+"Detail").push("第"+(title_index+1)+"題");
-            if (title_index === total_indedx){
-              alert("第四關遊戲結束")
-
+            db.ref(fullDbUrl+"Detail").push("第"+(title_index+1)+"題");
+            console.log("title_index",title_index)
+            console.log("total_indedx",total_indedx)
+            if (title_index == total_indedx){
               logFile.push("遊戲分數:" + score5 + "\n")
               logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
-      			  logFile.push("此關花費時間:" + (900-game5_time) + "\n")
+      			  logFile.push("此關花費時間:" + (360-game5_time) + "\n")
               logFile.push("第四關遊戲結束-全部題目作答完(d)\n")
               logFile.push("\n")
               logFileSimple.push("d")
               db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
               db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
-              db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (900-game5_time));
+              db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (360-game5_time));
               db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-全部題目作答完(d)");
               db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
+              gameLosePop()
               var highestIntervalId = setInterval(";");
               for (var i = 0 ; i < highestIntervalId ; i++) {
                   clearInterval(i); 
               }
-              gameLosePop
+              
             }
           }else{
             life -= 15
@@ -516,14 +518,12 @@ function game5(game_score) {
         var blockType = R(0, 1);
         //****print障礙物-附加data-value****//
         if (blockType == 0) {
-          var $block = $('<div class="block gggg-' + title_index + '" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><p>' + game5AnswerArray[String(title_index)][tt_index] +'</p><img src="img/cloud_v1.png"></div>');
-          // tt_index+=1
+          var $block = $('<div class="block" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><p>' + game5AnswerArray[String(title_index)][tt_index] +'</p><img src="img/cloud_v1.png"></div>');          // tt_index+=1
           // if(tt_index===4){
           //   tt_index=0
           // }
         } else {
-          var $block = $('<div class="block gggg-' + title_index + '" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><p>' + game5AnswerArray[String(title_index)][tt_index] +'</p><img src="img/cloud_v1.png"></div>');
-          // tt_index+=1
+          var $block = $('<div class="block" id="' + id + '" data-value="' + game5AnswerArray[String(title_index)][tt_index] + '"><p>' + game5AnswerArray[String(title_index)][tt_index] +'</p><img src="img/cloud_v1.png"></div>');          // tt_index+=1
           // if(tt_index===4){
           //   tt_index=0
           // }
@@ -658,6 +658,7 @@ function game5(game_score) {
       db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->補血+30按鈕(p)");
       if(game5_bonus>0){
         game5_bonus -= 1;
+        $('#game5_bonus_count').text(game5_bonus);
         life += 30
         if(life>=100){
           life = 100
@@ -674,6 +675,7 @@ function game5(game_score) {
       db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->時間+30秒按鈕(t)");
       if(game5_bonus>0){
         game5_bonus -= 1;
+        $('#game5_bonus_count').text(game5_bonus);
         game.gameTime += 30;
         $('.game__time').text(game.gameTime);
       }

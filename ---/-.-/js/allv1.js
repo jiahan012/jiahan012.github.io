@@ -1,6 +1,5 @@
-var logFile = []
 var logFileSimple = []
-logFile = JSON.parse(sessionStorage.getItem("logFile"));
+var logFile = JSON.parse(sessionStorage.getItem("logFile"));
 
 function game2s(game_score) {
   var s2 = game_score

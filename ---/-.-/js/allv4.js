@@ -56,7 +56,7 @@ function game5(game_score) {
       title: 'Mary _____ hot chocolate to milk.',
     },
     {
-      title: 'Mary’s success _____home to people the fact that the future of work lies in learning.',
+      title: "Mary's success _____home to people the fact that the future of work lies in learning.",
     }, 
     {
       title: 'It _____ without saying that Mary may be the laziest person that John has ever met',

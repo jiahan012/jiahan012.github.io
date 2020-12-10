@@ -518,7 +518,7 @@ function game4(game_score) {
 			}
 			if(bingo_line>=4){
 				clearInterval(interval);
-				$('#nextModalMessage').html("恭喜得到4條賓果線\n遊戲結束\n</br>即將進入下一關遊戲")
+				$('#nextModalMessage').html("恭喜得到4條賓果線\n</br>遊戲結束\n</br>即將進入下一關遊戲")
 				$('#nextModal').modal({backdrop: 'static', keyboard: false}) 
 				// alert("第二關遊戲結束");
 				logFile.push("遊戲分數:" + score4 + "\n")

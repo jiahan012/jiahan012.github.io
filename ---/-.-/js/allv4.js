@@ -230,7 +230,7 @@ function game5(game_score) {
         _this.updateCss();
 
         if (game.gameTime > 0 && _this.collide1(box)) {
-          life -= 20
+          life -= 15
           $('#barr').attr('aria-valuenow', life).css('width', life+'%');
           $('#hppp').html(life)
           _this.$el.children('img').attr("src","img/cloud_v3.png")
@@ -312,7 +312,7 @@ function game5(game_score) {
               gameLosePop
             }
           }else{
-            life -= 20
+            life -= 15
             clearInterval(moveTimer)
             _this.$el.children('img').attr("src","img/cloud_v2.png")
             $('#barr').attr('aria-valuenow', life).css('width', life + '%');
@@ -392,7 +392,7 @@ function game5(game_score) {
         _this.updateCss();
 
         if (game.gameTime > 0 && _this.collide1(box)) {
-          life -= 20
+          life -= 15
           $('#barr').attr('aria-valuenow', life).css('width', life+'%');
           $('#hppp').html(life)
           _this.$el.addClass('ooo')

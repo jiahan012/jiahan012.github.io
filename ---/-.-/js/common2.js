@@ -233,16 +233,20 @@ function game1() {
 			db.ref(fullDbUrl+"SimpleMission").push(logFileSimple);
 			db.ref(fullDbUrl+"Astep").set({step:3});
 			localStorage.setItem("Astep", 3)
+			db.ref(fullDbUrl+"Astep").set({step:3});
+			localStorage.setItem("Astep", 3)
+			logFile.push(logFileSimple.join(''))
+			logFile.push("\n\n")
+			console.log(logFile)
+			console.log(JSON.stringify(logFile))
+			localStorage.setItem("logFile", JSON.stringify(logFile))
+			console.log(localStorage.setItem("logFile"))
 			$('#nextModal').on('hidden.bs.modal', function (e) {
 				$('#game1').css('display', 'none');
 				$('#game2').css('display', 'block');
 				$('#mission_score_box').css('display', 'none');
 				$('#game_score_box').css('display', 'block');
-				db.ref(fullDbUrl+"Astep").set({step:3});
-				localStorage.setItem("Astep", 3)
-				logFile.push(logFileSimple.join(''))
-				logFile.push("\n\n")
-				localStorage.setItem("logFile", JSON.stringify(logFile))
+
 			});
 
 			
@@ -347,16 +351,17 @@ function game1() {
 			db.ref(fullDbUrl+"Detail").push("任務得分:" + score);
 			db.ref(fullDbUrl+"Detail").push("任務測驗結束(E)");
 			db.ref(fullDbUrl+"SimpleMission").push(logFileSimple);
+			db.ref(fullDbUrl+"Astep").set({step:3});
+			localStorage.setItem("Astep", 3)
+			logFile.push(logFileSimple.join(''))
+			logFile.push("\n\n")
+			localStorage.setItem("logFile", JSON.stringify(logFile))
 			$('#nextModal').on('hidden.bs.modal', function (e) {
 				$('#game1').css('display', 'none');
 				$('#game2').css('display', 'block');
 				$('#mission_score_box').css('display', 'none');
 				$('#game_score_box').css('display', 'block');
-				db.ref(fullDbUrl+"Astep").set({step:3});
-				localStorage.setItem("Astep", 3)
-				logFile.push(logFileSimple.join(''))
-				logFile.push("\n\n")
-				localStorage.setItem("logFile", JSON.stringify(logFile))
+
 			});
 		}
 	}

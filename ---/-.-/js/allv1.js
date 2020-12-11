@@ -282,12 +282,6 @@ function game2(game_score) {
             finishCountGame()
           }
         }
-        if (count === 6) {
-          score1+=500
-			    $('#game_score').text(score1)
-          // 六格全開遊戲結束
-          setTimeout(success, 1000);
-        }
       }
     }
     //關閉並重置

@@ -244,10 +244,11 @@ function game5(game_score) {
           $("#boxman_value").attr("src","img/boxman4.png")
           setTimeout(function () {
             _this.$el.remove();
-          }, 600);
-          setTimeout(function () {
             $("#boxman_value").attr("src","img/boxman.png")
-          }, 1000);
+          }, 600);
+          // setTimeout(function () {
+            
+          // }, 1000);
           logFile.push(game5_time + "秒-------------->撞到障礙物(c)\n")
           logFileSimple.push("c")
           db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->撞到障礙物(c)");
@@ -263,10 +264,11 @@ function game5(game_score) {
             $("#boxman_value").attr("src","img/boxman3.png")
             setTimeout(function () {
               _this.$el.remove();
-            }, 600);
-            setTimeout(function () {
               $("#boxman_value").attr("src","img/boxman.png")
-            }, 1000);
+            }, 600);
+            // setTimeout(function () {
+              
+            // }, 1000);
             title_index +=1
             right_index = game5AnswerArray[String(title_index)][4]
             score5 += 30
@@ -329,10 +331,11 @@ function game5(game_score) {
               $("#boxman_value").attr("src","img/boxman2.png")
               setTimeout(function () {
                 _this.$el.remove();
-              }, 600);
-              setTimeout(function () {
                 $("#boxman_value").attr("src","img/boxman.png")
-              }, 1000);
+              }, 600);
+              // setTimeout(function () {
+                
+              // }, 1000);
             }
           }          
         }
@@ -394,7 +397,7 @@ function game5(game_score) {
           }, 200);
           setTimeout(function () {
             $("#boxman_value").attr("src","img/boxman.png")
-          }, 1000);
+          }, 600);
           logFile.push(game5_time + "秒-------------->撞到障礙物(c)\n")
           logFileSimple.push("c")
           db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->撞到障礙物(c)");
@@ -409,10 +412,11 @@ function game5(game_score) {
           $("#boxman_value").attr("src","img/boxman3.png")
           setTimeout(function () {
             _this.$el.remove();
-          }, 600);   
-          setTimeout(function () {
             $("#boxman_value").attr("src","img/boxman.png")
-          }, 1000);  
+          }, 600);   
+          // setTimeout(function () {
+            
+          // }, 1000);  
           game5_bonus += 1
           $('#game5_bonus_count').text(game5_bonus);
           $('#game5_hp_btn').attr('disabled', false);

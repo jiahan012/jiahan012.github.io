@@ -674,6 +674,7 @@
 	<script type="text/javascript" src="js/allv2.min.js"></script>
 	<script type="text/javascript" src="js/allv3.min.js"></script>
 	<script type="text/javascript" src="js/allv4.js"></script>
+	<script type="text/javascript" src="js/jquery.preload.min.js"></script>
 	<script>
 		var save_number = localStorage.getItem("testNumber")
 		var save_name = localStorage.getItem("testName")
@@ -788,7 +789,18 @@
 		$('#game2').css('display', 'block');
 		$('#mission_score_box').css('display', 'none');
 		$('#game_score_box').css('display', 'block');
-
+		$.preload( 'img/cloud_v3.png',
+			'img/boxman.png',
+			'img/boxman4.png',
+			'img/boxman3.png',
+			'img/cloud_v2.png',
+			'img/boxman2.png',
+			'img/cloud_v1.png',
+			'img/bonus.png',
+			'img/btn2.png',
+			'img/btn1.png',
+			'img/boxman5.png'
+		);
 		game2s(0)
 	</script>
 </body>

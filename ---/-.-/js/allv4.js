@@ -80,7 +80,7 @@ function game5(game_score) {
     "10":["xxx","xxx","xxx","xxx",0]
   }
 
-  var game5_time = 200;
+  var game5_time = 180;
   $('#qa_total').show();
   var game5_topic = 1
   $('#game5_topic').html(game5_topic)
@@ -291,13 +291,13 @@ function game5(game_score) {
             if (title_index == total_indedx){
               logFile.push("遊戲分數:" + score5 + "\n")
               logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
-      			  logFile.push("此關花費時間:" + (200-game5_time) + "\n")
+      			  logFile.push("此關花費時間:" + (180-game5_time) + "\n")
               logFile.push("第四關遊戲結束-全部題目作答完(d)\n")
               logFile.push("\n")
               logFileSimple.push("d")
               db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
               db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
-              db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (200-game5_time));
+              db.ref(fullDbUrl+"Detail").push("此關花費時間:" + (180-game5_time));
               db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-全部題目作答完(d)");
               db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
               gameLosePop()
@@ -437,7 +437,7 @@ function game5(game_score) {
       this.boxv = 6;
       this.blockv = 1;
       this.touch = false;
-      this.gameTime = 200;
+      this.gameTime = 180;
       this.isFalse = false;
     }
     // 遊戲本體--// 按鈕控制
@@ -472,7 +472,7 @@ function game5(game_score) {
             clearInterval(timer);
             console.log('lose');
           }
-          if (_this.gameTime == 170) {
+          if (_this.gameTime == 150) {
             $("#game5-notify-text").text("若吸入機會硬幣，可使用圓形按鈕下方輔助功能。");
           }
           if (_this.gameTime < 0) {

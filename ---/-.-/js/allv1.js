@@ -255,7 +255,7 @@ function game2(game_score) {
         logFile.push("配對失敗(C)\n")
         logFileSimple.push("C")
         db.ref(fullDbUrl+"Detail").push("配對失敗(C)");
-        allFlipBack(thisValue);
+        allFlipBack();
         $('#game2-half-btn').attr('disabled', true);
         $('.half-line').removeClass('support-shadow');
         isSupport = false

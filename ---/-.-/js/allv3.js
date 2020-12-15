@@ -518,7 +518,7 @@ function game4(game_score) {
 			}
 			if(bingo_line>=4){
 				clearInterval(interval);
-				$('#nextModalMessage').html("恭喜得到4條賓果線\n</br>遊戲結束\n</br>即將進入下一關遊戲")
+				$('#nextModalMessage').html("恭喜得到4條賓果線\n遊戲結束\n</br>即將進入下一關遊戲")
 				$('#nextModal').modal({backdrop: 'static', keyboard: false}) 
 				// alert("第二關遊戲結束");
 				logFile.push("遊戲分數:" + score4 + "\n")
@@ -735,15 +735,19 @@ function game4(game_score) {
 				utterThis.voice = voices[20];
 				utterThis.pitch = 1;
 				utterThis.rate = 0.7;
+				if (navigator.userAgent.indexOf('Mac OS X') != -1) {
+					utterThis.voice = voices[0];
+					utterThis.rate = 0.9;
+				}
 				synth.speak(utterThis);
+				logFile.push(game4_time + "秒-------------->發音按鈕(v)\n")
+				logFileSimple.push("v")
+				db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->發音按鈕(v)");
 			}
 		}		
 
 		$('#play').on( "click", function(e) {
 			game4_answer_voice = game4Array[targetId].voice
-			logFile.push(game4_time + "秒-------------->發音按鈕(v)\n")
-			logFileSimple.push("v")
-			db.ref(fullDbUrl+"Detail").push(game4_time + "秒-------------->發音按鈕(v)");
 			e.preventDefault();
 
 			speak();

@@ -253,6 +253,15 @@ function game5(game_score) {
           logFileSimple.push("c")
           db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->撞到障礙物(c)");
           if(life<=0){
+            logFile.push("遊戲分數:" + score5 + "\n")
+            logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
+            logFile.push("第四關遊戲結束-沒血量(h)\n")
+            logFile.push("\n")
+            logFileSimple.push("h")
+            db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
+            db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
+            db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-沒血量(h)");
+            db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
             game.gameLose();
           }
         }
@@ -402,6 +411,15 @@ function game5(game_score) {
           logFileSimple.push("c")
           db.ref(fullDbUrl+"Detail").push(game5_time + "秒-------------->撞到障礙物(c)");
           if(life<=0){
+            logFile.push("遊戲分數:" + score5 + "\n")
+            logFile.push("此關遊戲得分:" + (score5-game_score) + "\n")
+            logFile.push("第四關遊戲結束-沒血量(h)\n")
+            logFile.push("\n")
+            logFileSimple.push("h")
+            db.ref(fullDbUrl+"Detail").push("遊戲分數:" + score5);
+            db.ref(fullDbUrl+"Detail").push("此關遊戲得分:" + (score5-game_score));
+            db.ref(fullDbUrl+"Detail").push("第四關遊戲結束-沒血量(h)");
+            db.ref(fullDbUrl+"SimpleGame").push(logFileSimple);
             game.gameLose();
           }
         }

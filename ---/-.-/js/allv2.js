@@ -294,6 +294,7 @@ function game3(game_score) {
       next_word();
       logFile.push("第"+(game2_number+1)+"題\n")
       db.ref(fullDbUrl+"Detail").push("第"+(game2_number+1)+"題");
+      $('#game2_support_btn').attr('disabled', false);
     }
   }
 
@@ -322,6 +323,7 @@ function game3(game_score) {
     logFile.push(game2_time + "秒-------------->提示單字按鈕(J)\n")
     logFileSimple.push("J")
     db.ref(fullDbUrl+"Detail").push(game2_time + "秒-------------->提示單字按鈕(J)");
+    $('#game2_support_btn').attr('disabled', true);
     game2_isSupport = true
     game2_support_word()
   })

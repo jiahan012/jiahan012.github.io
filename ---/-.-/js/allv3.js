@@ -113,17 +113,17 @@ function game4(game_score) {
 
 		var game4Array = [
 			{
+				img: '02.jpg',
+				title: 'Mary really enjoys the time spent in the extracurricular activities in which she __________.',
+				answer: 'participates',
+				voice: 'Mary really enjoys the time spent in the extracurricular activities in which she participates.'
+			},
+
+			{
 				img: '01.jpg',
 				title: 'When John was an elementary student, John did not like Mary because she always had ________ colors in her hair.',
 				answer: 'diverse',
 				voice: 'When John was an elementary student, John did not like Mary because she always had diverse colors in her hair.'
-			},
-
-			{
-				img: '02.jpg',
-				title: 'Mary has not eaten any food for two days but she is very pleased and extremely happy to take part in __________ activities.',
-				answer: 'extracurricular',
-				voice: 'Mary has not eaten any food for two days but she is very pleased and extremely happy to take part in extracurricular activities.'
 			},
 
 			{
@@ -141,11 +141,26 @@ function game4(game_score) {
 			},
 
 			{
+				img: '15.jpg',
+				title: 'The future of work lies in learning, working, and playing ________ so we cannot ignore any aspect.',
+				answer: 'concurrently',
+				voice: 'The future of work lies in learning, working, and playing concurrently so we cannot ignore any aspect.'
+			},			
+
+			{
 				img: '05.jpg',
 				title: 'All students are very ________ of her intelligence.',
 				answer: 'jealous',
 				voice: 'All students are very jealous of her intelligence.'
 			},
+
+			{
+				img: '09.jpg',
+				title: 'Mary successfully passed the ________.',
+				answer: 'examination',
+				voice: 'Mary successfully passed the examination.'
+			},
+
 			{
 				img: '06.jpg',
 				title: 'Mary is not ________ at all due to the fact that she enjoys reading.',
@@ -180,6 +195,12 @@ function game4(game_score) {
 				voice: 'Mary could exhaust her financial resources.'
 			},
 			{
+				img: '02.jpg',
+				title: 'Mary has not eaten any food for two days but she is very pleased and extremely happy to take part in __________ activities.',
+				answer: 'extracurricular',
+				voice: 'Mary has not eaten any food for two days but she is very pleased and extremely happy to take part in extracurricular activities.'
+			},			
+			{
 				img: '11.jpg',
 				title: 'John sometimes plays ________ with his classmates.',
 				answer: 'basketball',
@@ -199,18 +220,15 @@ function game4(game_score) {
 				voice: 'Mary can achieve her targets because her parents provide a lot of financial support and offer constructive advice.'
 			},
 
+			
+
 			{
 				img: '14.jpg',
 				title: 'There is no way to ________ Mary to drink milk is needed.',
 				answer: 'persuade',
 				voice: 'There is no way to persuade Mary to drink milk is needed.'
 			},
-			{
-				img: '15.jpg',
-				title: 'The future of work lies in learning, working, and playing ________ so we cannot ignore any aspect.',
-				answer: 'concurrently',
-				voice: 'The future of work lies in learning, working, and playing concurrently so we cannot ignore any aspect.'
-			},
+
 			{
 				img: '16.jpg',
 				title: 'It is ________ to say that most people are not as lazy as Mary.',
@@ -218,28 +236,23 @@ function game4(game_score) {
 				voice: 'It is needless to say that most people are not as lazy as Mary.'
 			},
 			{
+				img: '03.jpg',
+				title: 'Mary is not ________ to complete her PhD study.',
+				answer: 'motivated',
+				voice: 'Mary is not motivated to complete her PhD study.'
+			},			
+			{
 				img: '01.jpg',
 				title: 'When John was an ________ student, John did not like Mary because she always had diverse colors in her hair.',
 				answer: 'elementary',
 				voice: 'When John was an elementary student, John did not like Mary because she always had diverse colors in her hair.'
 			},
+
 			{
-				img: '02.jpg',
-				title: 'Mary really enjoys the time spent in the extracurricular activities in which she __________.',
-				answer: 'participates',
-				voice: 'Mary really enjoys the time spent in the extracurricular activities in which she participates.'
-			},
-			{
-				img: '03.jpg',
-				title: 'Mary is not ________ to complete her PhD study.',
-				answer: 'motivated',
-				voice: 'Mary is not motivated to complete her PhD study.'
-			},
-			{
-				img: '04.jpg',
-				title: "Mary's parents want to change her wrong ________ toward her PhD.",
-				answer: 'attitude',
-				voice: "Mary's parents want to change her wrong attitude toward her PhD."
+				img: '11.jpg',
+				title: 'The library is their ________ place.',
+				answer: 'disfavored',
+				voice: 'The library is their disfavored place.'
 			},
 			{
 				img: '06.jpg',
@@ -254,16 +267,10 @@ function game4(game_score) {
 				voice: 'Digital games help Mary have creative imagination.'
 			},
 			{
-				img: '09.jpg',
-				title: 'Mary successfully passed the ________.',
-				answer: 'examination',
-				voice: 'Mary successfully passed the examination.'
-			},
-			{
-				img: '11.jpg',
-				title: 'The library is their ________ place.',
-				answer: 'disfavored',
-				voice: 'The library is their disfavored place.'
+				img: '04.jpg',
+				title: "Mary's parents want to change her wrong ________ toward her PhD.",
+				answer: 'attitude',
+				voice: "Mary's parents want to change her wrong attitude toward her PhD."
 			},
 			{
 				img: '13.jpg',

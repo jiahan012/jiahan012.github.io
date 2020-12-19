@@ -172,6 +172,9 @@ function game1() {
 	function check(select) {
 		if(testArray[qaStart].answers[select].isright === true){
 			// testArray.splice(qatatle, 1);
+			logFile.push(time + "秒-------------->答題正確(Y)\n")
+			logFileSimple.push("Y")
+			db.ref(fullDbUrl+"Detail").push(time + "秒-------------->答題正確(Y)");
 			qaStart++
 			time = 90
 			timeCount.text(time);
@@ -188,9 +191,6 @@ function game1() {
 				$('#alertModal').modal({backdrop: 'static', keyboard: false})
 				// alert("答對了")	
 			}
-			logFile.push(time + "秒-------------->答題正確(Y)\n")
-			logFileSimple.push("Y")
-			db.ref(fullDbUrl+"Detail").push(time + "秒-------------->答題正確(Y)");
 			showgame2(qaStart)
 		}else{
 			score-=50		
